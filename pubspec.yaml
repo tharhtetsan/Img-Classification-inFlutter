@@ -31,14 +31,17 @@ dependencies:
   flutter:
     sdk: flutter
   image_picker: ^0.8.6+4
-  collection: ^1.17.1 
+  collection: 
   logger: ^1.2.2
-
+  meta: ^1.1.8
+  quiver: ^3.0.1
+  path_provider: ^2.0.1
+  tflite_flutter: ^0.9.0
+  tuple: ^2.0.0
+  ffi: ^1.0.0
+  image: ^3.0.2
   
-  path_provider:
-  tflite_flutter_helper:
-    path:
-      ../../
+
 
 
 
