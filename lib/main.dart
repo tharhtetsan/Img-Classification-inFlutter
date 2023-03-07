@@ -2,10 +2,10 @@ import 'dart:io';
 import 'package:image/image.dart' as img;
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:tf_image_classifier/test.dart';
 import 'classifier.dart';
 import 'classifier_quant.dart';
 import 'package:logger/logger.dart';
-import 'package:tflite_flutter_helper/tflite_flutter_helper.dart';
 
 void main() => runApp(MyApp());
 
@@ -43,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   img.Image? fox;
 
-  Category? category;
+  testObj? category;
 
   @override
   void initState() {
@@ -64,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _predict() async {
     img.Image imageInput = img.decodeImage(_image!.readAsBytesSync())!;
-    var pred = _classifier.predict(imageInput);
+    testObj pred = _classifier.getPrdictionTime(imageInput);
 
     setState(() {
       this.category = pred;
@@ -82,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
         children: <Widget>[
           Center(
             child: _image == null
-                ? Text('No image selected.')
+                ? Text('gg No image selected.')
                 : Container(
                     constraints: BoxConstraints(
                         maxHeight: MediaQuery.of(context).size.height / 2),
@@ -96,7 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
             height: 36,
           ),
           Text(
-            category != null ? category!.label : '',
+            category != null ? category!.catObj.label : '',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
           ),
           SizedBox(
@@ -104,7 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           Text(
             category != null
-                ? 'Confidence: ${category!.score.toStringAsFixed(3)}'
+                ? ' Confidence: ${category!.catObj.score.toStringAsFixed(3)} # ${category!.run.toStringAsFixed(1)} ms'
                 : '',
             style: TextStyle(fontSize: 16),
           ),

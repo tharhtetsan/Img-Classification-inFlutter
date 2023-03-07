@@ -5,6 +5,7 @@ import 'package:collection/collection.dart';
 import 'package:logger/logger.dart';
 import 'package:tflite_flutter/tflite_flutter.dart';
 import 'package:tflite_flutter_helper/tflite_flutter_helper.dart';
+import 'test.dart';
 
 abstract class Classifier {
   late Interpreter interpreter;
@@ -46,7 +47,6 @@ abstract class Classifier {
   }
 
   Future<void> loadModel() async {
-    print(modelName);
     try {
       interpreter =
           await Interpreter.fromAsset(modelName, options: _interpreterOptions);
@@ -106,6 +106,16 @@ abstract class Classifier {
     final pred = getTopProbability(labeledProb);
 
     return Category(pred.key, pred.value);
+  }
+
+  testObj getPrdictionTime(Image image) {
+    final runs = DateTime.now().millisecondsSinceEpoch;
+
+    Category catObj = predict(image);
+    final run = DateTime.now().millisecondsSinceEpoch - runs;
+
+    testObj testobj = testObj(catObj, run);
+    return testobj;
   }
 
   void close() {
