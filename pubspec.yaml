@@ -30,16 +30,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  image_picker: ^0.8.6+4
-  collection: 
-  logger: ^1.2.2
-  meta: ^1.1.8
-  quiver: ^3.0.1
-  path_provider: ^2.0.1
+
   tflite_flutter: ^0.9.0
-  tuple: ^2.0.0
-  ffi: ^1.0.0
-  image: ^3.0.2
+
   
 
 
@@ -60,6 +53,7 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
 
+  
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -72,7 +66,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
+  assets:
+  - assets/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
